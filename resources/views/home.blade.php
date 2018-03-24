@@ -12,7 +12,7 @@
         @foreach($barang as $data)
         <div class="col-lg-3 col-md-4 col-xs-6">
           
-            <a href="" data-toggle="modal" data-target="#myModal{{$no}}"><img class="img-fluid img-thumbnail" src="{{asset('img/'.$data->cover.'')}}" alt="">
+            <a href="" data-toggle="modal" data-target="#myModal{{$data->id}}"><img class="img-fluid img-thumbnail" src="{{asset('img/'.$data->cover.'')}}" alt="">
           </a>
            <td>{{ $data->nama_barang }}</td>
            <td>{{ $data->pinjam }}</td>
@@ -27,7 +27,7 @@
           
       
 
-  <div id="myModal{{$no}}" class="modal fade" role="dialog">
+  <div id="myModal{{$data->id}}" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
 <!-- Modal content-->
