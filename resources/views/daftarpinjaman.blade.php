@@ -1,40 +1,49 @@
-@extends('layouts.app')
+@extends('templet')
 
 @section('content')
 
-<br><br>
-<div class="panel-body">
-<br><br>
-<div class="table-responsive">
-<table class="table">
-<tr>
-<button onclick="myFunction()" class="btn btn-info btn-sm">Print this page</button>
+
+
+<h1 class="my-4 text-center text-lg-left">Rental Alat Produktif</h1>
+<button onclick="myFunction()">Print this page</button>
 <script>
-function myFunction() {
-window.print();
-}
+    function myFunction(){
+        window.print();
+    }
 </script>
-<td>No</td>
-<td>Nama Barang</td>
- <td>Gambar</td>
-<td>Tanggal Pinjam</td>
-<td>Status</td>
-</tr>
-                                @php
-                                $no = 1;
-                                @endphp
-                                @foreach($barang as $data)
-                                 <tr>
-                                     <td>{{$no}}</td>
-                                     <td>{{$data->nama_barang}}</td>
-                                     <td><img src="{{asset('img/'.$data->cover)}}" style="width: 50px"></td>
-                                     
-                                     <td>{{$data->pinjam}}</td>
- </tr>
-                                 @endforeach
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="row text-center text-lg-left">
+
+        @php
+        $no = 1;
+        @endphp
+        @foreach($barang as $data)
+        <div class="col-lg-3 col-md-4 col-xs-6">
+          
+            <a href="" data-toggle="modal" data-target="#myModal{{$no}}"><img class="img-fluid img-thumbnail" src="{{asset('img/'.$data->cover.'')}}" alt="">
+          </a>
+           <td>{{ $data->nama_barang }}</td>
+           <td>{{ $data->pinjam }}</td>
+          
+        </div>
+
+        <div id="myModal{{$no}}" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      
+      <div class="modal-body">
+      <center>
+        <img src="{{asset('img/'.$data->cover.'')}}" width="500">
+    </center>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+        @endforeach
+
+      </div>
+<!--  -->
 @endsection

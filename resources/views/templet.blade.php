@@ -8,13 +8,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Thumbnail Gallery - Start Bootstrap Template</title>
+    <title>Rental Alat Produktif</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/thumbnail-gallery.css" rel="stylesheet">
+    <link href="{{asset('css/thumbnail-gallery.css')}}" rel="stylesheet">
 
   </head>
 
@@ -23,7 +23,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <a class="navbar-brand" href="#">RENTAL ALAT PRODUKTIF</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,8 +31,8 @@
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
 
-              <a class="nav-link" href="{{ url('/home') }}">Home
-                <!-- <span class="sr-only">(current)</span> -->
+              <a class="nav-link" href="">Home
+                <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
@@ -79,45 +79,9 @@
     <!-- Page Content -->
     <div class="container">
 
-
-      <h1 class="my-4 text-center text-lg-left">Thumbnail Gallery</h1>
-
-      <div class="row text-center text-lg-left">
-
-        @php
-        $no = 1;
-        @endphp
-        @foreach($barang as $data)
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          
-            <a href="" data-toggle="modal" data-target="#myModal{{$data->id}}"><img class="img-fluid img-thumbnail" src="{{asset('img/'.$data->cover.'')}}" alt="">
-          </a>
-           <td>{{ $data->nama_barang }}</td>
-           <td>{{ $data->amount }}</td>
-          @if($data->amount !=0)
-          <tr>
-         <td><a href="{{ route('guest.barangs.borrow', $data->id) }}" class="btn btn-info btn-sm">Pinjam</a></td></tr>
-         @endif
-        </div>
-
-        <div id="myModal{{$data->id}}" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      
-      <div class="modal-body">
-      <center>
-        <img src="{{asset('img/'.$data->cover.'')}}" width="500">
-    </center>
-      </div>
-      
-    </div>
-
-  </div>
-</div>
-        @endforeach
-
+@include('layouts._flash')
+ 
+     @yield('content')
       </div>
     </div>
 
@@ -133,8 +97,8 @@
       <!-- /.container -->
     </footer>
      <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
   </body>
 
